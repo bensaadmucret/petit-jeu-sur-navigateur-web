@@ -24,7 +24,6 @@ window.addEventListener('load', function() {
             this.isGameOver = false;
         }
 
-        // Start a new game
         newGame() {
             this.player1.score = 0;
             this.player2.score = 0;
@@ -34,7 +33,7 @@ window.addEventListener('load', function() {
             this.isGameOver = false;
         }
 
-        // Roll the dice
+
         rollDice() {
             this.dice.roll();
             this.score += this.dice.getValue();
@@ -49,7 +48,6 @@ window.addEventListener('load', function() {
             this.nextPlayer();
         }
 
-        // Switch to the next player
         nextPlayer() {
             if (this.currentPlayer === this.player1) {
                 this.currentPlayer = this.player2;
@@ -58,7 +56,7 @@ window.addEventListener('load', function() {
             }
         }
 
-        // Check if the game is over
+    
         isGameOver() {
             if (this.player1.score >= 100 || this.player2.score >= 100) {
                 this.isGameOver = true;
@@ -66,7 +64,7 @@ window.addEventListener('load', function() {
             }
         }
 
-        // Get the winner
+
         getWinner() {
             if (this.player1.score >= 100) {
                 return this.player1;
@@ -98,7 +96,7 @@ window.addEventListener('load', function() {
     const game = new Game(new Player('Player 1', 0), new Player('Player 2', 0));
     
 
-    // Add event listeners
+
     btnNewGame.addEventListener('click', function() {
         game.newGame();
         updateUI();
@@ -123,7 +121,7 @@ window.addEventListener('load', function() {
 
     );
 
-    // Update the UI
+
    function updateUI() {
         document.getElementById('player1Score').innerHTML = game.player1.score;
         document.getElementById('player2Score').innerHTML = game.player2.score;
