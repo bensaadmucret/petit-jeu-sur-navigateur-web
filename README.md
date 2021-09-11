@@ -1,4 +1,4 @@
-# petit-jeu-sur-navigateur-web
+# Petit jeu sur navigateur web avec Javascript
 ## Règles :
 
 >Le jeu comprend 2 joueurs sur un seul et même écran.
