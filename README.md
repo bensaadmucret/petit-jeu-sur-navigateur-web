@@ -1,6 +1,4 @@
 # petit-jeu-sur-navigateur-web
-
-:rocket 
 ## Règles :
 
 >Le jeu comprend 2 joueurs sur un seul et même écran.
