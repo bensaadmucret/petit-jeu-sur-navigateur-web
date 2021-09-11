@@ -40,7 +40,6 @@ window.addEventListener('load', function() {
             console.log(`${this.currentPlayer.name} rolled ${this.dice.getValue()}`);
         }
 
-        // Hold the score
         hold() {
             this.currentPlayer.score += this.score;
             this.score = 0;
