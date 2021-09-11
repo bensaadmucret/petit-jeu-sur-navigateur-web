@@ -106,19 +106,14 @@ window.addEventListener('load', function() {
     btnRollDice.addEventListener('click', function() {
         game.rollDice();
         updateUI();
-        game.getWinner();
-        
     });
     
 
     btnHold.addEventListener('click', function() {
         game.hold();
         updateUI();
-        
-        
-    }
-
-    );
+        GameOver();    
+    });
 
 
    function updateUI() {
@@ -128,6 +123,22 @@ window.addEventListener('load', function() {
         document.getElementById('currentScore').innerHTML = game.score;
         document.getElementById('dice').innerHTML = game.dice.getValue();
     }
+
+    function GameOver(){
+        if(game.currentPlayer.score >= 100){
+            game.isGameOver = true;
+            alert(`${game.getWinner().name} wins!`);
+            
+        }
+
+        if(game.isGameOver === true){
+            game.newGame();
+            updateUI();
+        }
+        
+    }
+
+
 
     
 });
