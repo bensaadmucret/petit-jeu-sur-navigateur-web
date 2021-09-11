@@ -130,7 +130,6 @@ window.addEventListener('load', function () {
   btnHold.addEventListener('click', function () {
     game.hold();
     updateUI();
-    game.isGameOver();
   });
 
   function updateUI() {
