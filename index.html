@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The game</title>
-   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/app.css">
@@ -19,7 +19,7 @@
                 <div class="col-md-12 text-center">
                     <h1>
                         <button class="btn btn-default"type="button" id="newGame">
-                            New Game
+                           <i class="fas fa-sync-alt"></i> New Game
                     </h1>
                     </button>
                 </div>
@@ -33,18 +33,27 @@
                         <p id="dice"></p>
                     </div>
                     <div class="col-lg-6">
-                        <h2 class="font-weight-bold">Player 1</h2>
+                        <h2 id="player1" class="font-weight-bold">Player 1</h2>
                         <p id="player1Score"> scrore</p>
+                         <p id="currentScore1"></p>
                     </div>
                     <div class="col-lg-6">
-                        <h2 class="font-weight-bold">Player 2</h2>
+                        <h2 id="player2" class="font-weight-bold">Player 2</h2>
                         <p id="player2Score">scrore</p>
+                        <p id="currentScore2"></p>
                 
                     </div>
                 </div>
                 <div class="col-lg-12 text-center">
-                    <button id="btnRollDice" type="button" class="btn">ROLL DICE</button>
-                    <button id="btnHold" type="button" class="btn">HOLD</button>
+                    <button id="btnRollDice" type="button" class="btn">
+                        <i class="fas fa-sync-alt"></i>
+                        ROLL DICE
+                    </button>
+                    <br/>
+                    <button id="btnHold" type="button" class="btn">
+                        <i class="fas fa-save"></i>
+                        HOLD
+                    </button>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">

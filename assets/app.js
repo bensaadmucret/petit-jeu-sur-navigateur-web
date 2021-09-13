@@ -3,6 +3,10 @@ window.addEventListener('load', function() {
     const btnNewGame = document.getElementById('newGame');
     const btnRollDice = document.getElementById('btnRollDice');
     const btnHold = document.getElementById('btnHold');
+    const Player1 = document.getElementById('player1');
+    const Player2 = document.getElementById('player2');
+    const currentScore1 = document.getElementById('currentScore1');
+    const currentScore2 = document.getElementById('currentScore2');
    
     
     class Player {
@@ -55,6 +59,17 @@ window.addEventListener('load', function() {
             }
         }
 
+        badhand() {
+            this.value = this.dice.getValue();
+            if (this.value == 1) {
+                this.value = 0;
+                this.score = 0;
+                this.nextPlayer();
+            }                
+
+        }
+
+
     
         isGameOver() {
             if (this.player1.score >= 100 || this.player2.score >= 100) {
@@ -99,13 +114,13 @@ window.addEventListener('load', function() {
     btnNewGame.addEventListener('click', function() {
         game.newGame();
         updateUI();
-    
-    }
-    );
+        });
+ 
 
     btnRollDice.addEventListener('click', function() {
         game.rollDice();
         updateUI();
+        game.badhand();
     });
     
 
@@ -119,7 +134,19 @@ window.addEventListener('load', function() {
    function updateUI() {
         document.getElementById('player1Score').innerHTML = game.player1.score;
         document.getElementById('player2Score').innerHTML = game.player2.score;
-        document.getElementById('currentPlayer').innerHTML = game.currentPlayer.name;
+       document.getElementById('currentPlayer').innerHTML = game.currentPlayer.name;  
+       if (game.currentPlayer.name == 'Player 1') {
+           Player1.style.backgroundColor = '#00FF00';
+           Player1.innerHTML = 'Player 1';
+           Player2.removeAttribute('style');
+           currentScore1.innerHTML = game.score;
+       } else {
+           Player1.removeAttribute('style');
+           Player2.style.backgroundColor = '#FF0000';
+           Player2.innerHTML = 'Player 2';
+           currentScore2.innerHTML = game.score;
+       }
+    
         document.getElementById('currentScore').innerHTML = game.score;
         document.getElementById('dice').innerHTML = game.dice.getValue();
     }
