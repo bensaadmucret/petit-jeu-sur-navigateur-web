@@ -178,6 +178,7 @@ body{
        color: #fff;
        background-color: tomato;
        padding: 15px;
+       margin-bottom: 50px;
        text-align: center;
    }
    .player{
