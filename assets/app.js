@@ -1,7 +1,7 @@
 import Player from './player.js';
 import Game from './game.js';
    
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const btnNewGame = document.getElementById('newGame');
     const btnRollDice = document.getElementById('btnRollDice');
     const btnHold = document.getElementById('btnHold');
@@ -9,141 +9,37 @@ window.addEventListener('load', function() {
     const Player2 = document.getElementById('player2');
     const currentScore1 = document.getElementById('currentScore1');
     const currentScore2 = document.getElementById('currentScore2');
+
    
 
-    
-   /* class Player {
-        constructor(name, score) {
-            this.name = name;
-            this.score = score;
-        }
-    }   
-    */
-    
-    /*class Game {
 
-        constructor(player1, player2) {
-            this.player1 = player1;
-            this.player2 = player2;
-            this.currentPlayer = player1;
-            this.dice = new Dice();
-            this.score = 0;
-            this.isGameOver = false;
-            this.status = 'new game';
-            
-        }
-
-        newGame() {
-            this.player1.score = 0;
-            this.player2.score = 0;
-            this.currentPlayer = this.player1;
-            this.dice.reset();
-            this.score = 0;
-            this.status = 'new game';
-            this.isGameOver = false;
-           
-        }
-
-        getStatus() {
-            return this.status;
-        }
-
-
-        rollDice() {
-            this.dice.roll();
-            this.score += this.dice.getValue();
-            console.log(`${this.currentPlayer.name} rolled ${this.dice.getValue()}`);
-        }
-
-        hold() {
-            this.currentPlayer.score += this.score;
-            this.score = 0;
-            console.log(`${this.currentPlayer.name} holds ${this.score}`);
-            this.nextPlayer();
-        }
-
-        nextPlayer() {
-            if (this.currentPlayer === this.player1) {
-                this.currentPlayer = this.player2;
-            } else {
-                this.currentPlayer = this.player1;
-            }
-        }
-
-        badhand() {
-            this.value = this.dice.getValue();
-            if (this.value == 1) {
-                this.value = 0;
-                this.score = 0;
-                this.nextPlayer();
-            }                
-
-        }
-
-
-    
-        isGameOver() {
-            if (this.player1.score >= 100 || this.player2.score >= 100) {
-                this.isGameOver = true;
-                alert(`${this.getWinner().name} wins!`);
-            }
-        }
-
-
-        getWinner() {
-            if (this.player1.score >= 100) {
-                return this.player1;
-            } else {
-                return this.player2;
-            }
-        }
-    }*/
-
-
-   /* class Dice {
-        constructor() {
-            this.value = 0;
-        }
-
-        roll() {
-            this.value = Math.floor(Math.random() * 6) + 1;
-        }
-
-        getValue() {
-            return this.value;
-        }
-
-        reset() {
-            this.value = 0;
-        }
-    }*/
 
     const game = new Game(new Player('Player 1', 0), new Player('Player 2', 0));
     
 
 
-    btnNewGame.addEventListener('click', function() {
+    btnNewGame.addEventListener('click', function () {
         game.newGame();
         updateUI();
         console.log(game.getStatus());
         
        
-        });
+    });
  
 
-    btnRollDice.addEventListener('click', function() {
+    btnRollDice.addEventListener('click', function () {
         game.rollDice();
         updateUI();
         game.badhand();
         EachRoll()
-        GameOver(); 
+        GameOver();
     });
     
 
-    btnHold.addEventListener('click', function() {
+    btnHold.addEventListener('click', function () {
         game.hold();
         updateUI();
-       GameOver();    
+        GameOver();
     });
 
 
@@ -156,10 +52,9 @@ window.addEventListener('load', function() {
         if (game.newGame) {
             btnRollDice.removeAttribute('disabled', 'true');
             btnHold.removeAttribute('disabled', 'true');
-            btnNewGame.style.backgroundColor = 'tomato';
-            btnNewGame.innerHTML = '<h1> <i class="fas fa-skull"></i> Stop The game</h1>';
-            
+                             
         }
+    
        
        if (game.currentPlayer.name == 'Player 1') {
            Player1.style.backgroundColor = 'black';
@@ -174,35 +69,43 @@ window.addEventListener('load', function() {
            Player2.innerHTML = 'Player 2';
            currentScore2.innerHTML = game.score;
           
-       }       
-       
-    }
-
- 
-  function warning() {
-        confirm('Are you sure you want to start a new game?');
-    }
-        
-
-       
-    function EachRoll() {
+        }
+    } 
+       function EachRoll() {
         if ( game.dice.getValue() == 1) {
-            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-one.png" alt="logo" class="dice">';
-        } else if (game.dice.getValue() == 2) {
-            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-two.png" alt="logo" class="dice">';
+           document.getElementsByClassName('dice')['0'].removeAttribute('hidden');
+        } else {
+            document.getElementsByClassName('dice')['0'].setAttribute('hidden', 'true');
         }
-        else if (game.dice.getValue() == 3) {
-            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-three.png" alt="logo" class="dice">';
+        
+        if (game.dice.getValue() == 2) {
+            document.getElementsByClassName('dice')['1'].removeAttribute('hidden', 'true');
+        } else {
+            document.getElementsByClassName('dice')['1'].setAttribute('hidden', 'true');
         }
-        else if (game.dice.getValue() == 4) {
-            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-four.png" alt="logo" class="dice">';
-        }
-        else if (game.dice.getValue() == 5) {
-            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-five.png" alt="logo" class="dice">';
-        }
+        if (game.dice.getValue() == 3) {
+           document.getElementsByClassName('dice')['2'].removeAttribute('hidden', 'true');
+           }
         else {
-            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-six.png" alt="logo" class="dice">';
+            document.getElementsByClassName('dice')['2'].setAttribute('hidden', 'true');
         }
+        if (game.dice.getValue() == 4) {
+            document.getElementsByClassName('dice')['3'].removeAttribute('hidden', 'true');
+        } else {
+            document.getElementsByClassName('dice')['3'].setAttribute('hidden', 'true');
+        } 
+        if (game.dice.getValue() == 5) {
+               document.getElementsByClassName('dice')['4'].removeAttribute('hidden', 'true');
+        } else {
+               document.getElementsByClassName('dice')['4'].setAttribute('hidden', 'true');
+           }
+        if (game.dice.getValue() == 6) {
+            document.getElementsByClassName('dice')['5'].removeAttribute('hidden', 'true');
+           
+        } else {
+            document.getElementsByClassName('dice')['5'].setAttribute('hidden', 'true');
+           }
+             
     }
 
     function GameOver()  {
