@@ -314,7 +314,7 @@ body{
 
     .container-card {
         padding: 5px;
-        color: #333;
+        color: rgb(255, 255, 255);
         font-size: 1.5em;
         border: 1px solid #ccc;
         margin-top: 10px;
