@@ -121,6 +121,7 @@ window.addEventListener('load', function() {
         game.rollDice();
         updateUI();
         game.badhand();
+        EachRoll()
     });
     
 
@@ -147,7 +148,29 @@ window.addEventListener('load', function() {
            Player2.style.color = 'white';
            Player2.innerHTML = 'Player 2';
            currentScore2.innerHTML = game.score;
-       }
+          
+       }       
+       
+    }
+    
+    function EachRoll() {
+        if ( game.dice.getValue() == 1) {
+            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-one.png" alt="logo" class="dice">';
+        } else if (game.dice.getValue() == 2) {
+            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-two.png" alt="logo" class="dice">';
+        }
+        else if (game.dice.getValue() == 3) {
+            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-three.png" alt="logo" class="dice">';
+        }
+        else if (game.dice.getValue() == 4) {
+            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-four.png" alt="logo" class="dice">';
+        }
+        else if (game.dice.getValue() == 5) {
+            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-five.png" alt="logo" class="dice">';
+        }
+        else {
+            document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-six.png" alt="logo" class="dice">';
+        }
     }
 
     function GameOver(){
