@@ -122,19 +122,26 @@ window.addEventListener('load', function() {
         updateUI();
         game.badhand();
         EachRoll()
+        GameOver(); 
     });
     
 
     btnHold.addEventListener('click', function() {
         game.hold();
         updateUI();
-        GameOver();    
+       GameOver();    
     });
 
 
-   function updateUI() {
+    function updateUI() {
+       
         document.getElementById('player1Score').innerHTML = game.player1.score;
         document.getElementById('player2Score').innerHTML = game.player2.score;
+
+        if (game.newGame) {
+            btnRollDice.removeAttribute('disabled', 'true');
+            btnHold.removeAttribute('disabled', 'true');  
+        }
        
        if (game.currentPlayer.name == 'Player 1') {
            Player1.style.backgroundColor = 'black';
@@ -173,8 +180,16 @@ window.addEventListener('load', function() {
         }
     }
 
-    function GameOver(){
-        if(game.currentPlayer.score >= 100){
+    function GameOver()  {
+        if (game.isGameOver) {
+            btnRollDice.setAttribute('disabled', 'true');
+            btnHold.setAttribute('disabled', 'true');           
+        }
+        let winner = game.getWinner();
+        if (winner) {
+            document.getElementById('winner').innerHTML = `${winner.name} wins!`;
+        }
+        if(game.currentPlayer.score >= 100) {
             game.isGameOver = true;
             alert(`${game.getWinner().name} wins!`);
             
@@ -183,9 +198,12 @@ window.addEventListener('load', function() {
         if(game.isGameOver === true){
             game.newGame();
             updateUI();
+            document.getElementById('winner').innerHTML = "";
+
         }
-        
     }
+
+
 
 
 
