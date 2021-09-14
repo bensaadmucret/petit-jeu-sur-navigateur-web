@@ -1,4 +1,6 @@
-
+import Player from './player.js';
+import Game from './game.js';
+   
 window.addEventListener('load', function() {
     const btnNewGame = document.getElementById('newGame');
     const btnRollDice = document.getElementById('btnRollDice');
@@ -8,16 +10,17 @@ window.addEventListener('load', function() {
     const currentScore1 = document.getElementById('currentScore1');
     const currentScore2 = document.getElementById('currentScore2');
    
+
     
-    class Player {
+   /* class Player {
         constructor(name, score) {
             this.name = name;
             this.score = score;
         }
-    }
+    }   
+    */
     
-    
-    class Game {
+    /*class Game {
 
         constructor(player1, player2) {
             this.player1 = player1;
@@ -26,6 +29,8 @@ window.addEventListener('load', function() {
             this.dice = new Dice();
             this.score = 0;
             this.isGameOver = false;
+            this.status = 'new game';
+            
         }
 
         newGame() {
@@ -34,7 +39,13 @@ window.addEventListener('load', function() {
             this.currentPlayer = this.player1;
             this.dice.reset();
             this.score = 0;
+            this.status = 'new game';
             this.isGameOver = false;
+           
+        }
+
+        getStatus() {
+            return this.status;
         }
 
 
@@ -86,10 +97,10 @@ window.addEventListener('load', function() {
                 return this.player2;
             }
         }
-    }
+    }*/
 
 
-    class Dice {
+   /* class Dice {
         constructor() {
             this.value = 0;
         }
@@ -105,7 +116,7 @@ window.addEventListener('load', function() {
         reset() {
             this.value = 0;
         }
-    }
+    }*/
 
     const game = new Game(new Player('Player 1', 0), new Player('Player 2', 0));
     
@@ -114,6 +125,9 @@ window.addEventListener('load', function() {
     btnNewGame.addEventListener('click', function() {
         game.newGame();
         updateUI();
+        console.log(game.getStatus());
+        
+       
         });
  
 
@@ -137,10 +151,14 @@ window.addEventListener('load', function() {
        
         document.getElementById('player1Score').innerHTML = game.player1.score;
         document.getElementById('player2Score').innerHTML = game.player2.score;
+       
 
         if (game.newGame) {
             btnRollDice.removeAttribute('disabled', 'true');
-            btnHold.removeAttribute('disabled', 'true');  
+            btnHold.removeAttribute('disabled', 'true');
+            btnNewGame.style.backgroundColor = 'tomato';
+            btnNewGame.innerHTML = '<h1> <i class="fas fa-skull"></i> Stop The game</h1>';
+            
         }
        
        if (game.currentPlayer.name == 'Player 1') {
@@ -159,7 +177,14 @@ window.addEventListener('load', function() {
        }       
        
     }
-    
+
+ 
+  function warning() {
+        confirm('Are you sure you want to start a new game?');
+    }
+        
+
+       
     function EachRoll() {
         if ( game.dice.getValue() == 1) {
             document.getElementById('currentScore').innerHTML = ' <img src="assets/img/dice-one.png" alt="logo" class="dice">';
@@ -183,7 +208,8 @@ window.addEventListener('load', function() {
     function GameOver()  {
         if (game.isGameOver) {
             btnRollDice.setAttribute('disabled', 'true');
-            btnHold.setAttribute('disabled', 'true');           
+            btnHold.setAttribute('disabled', 'true');
+            btnNewGame.innerHTML = '<h1> <i class="fas fa-plus-circle"></i>New Game</h1>';
         }
         let winner = game.getWinner();
         if (winner) {
