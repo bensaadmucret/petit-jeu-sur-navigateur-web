@@ -134,21 +134,23 @@ window.addEventListener('load', function() {
    function updateUI() {
         document.getElementById('player1Score').innerHTML = game.player1.score;
         document.getElementById('player2Score').innerHTML = game.player2.score;
-       document.getElementById('currentPlayer').innerHTML = game.currentPlayer.name;  
+       //document.getElementById('currentPlayer').innerHTML = game.currentPlayer.name;  
        if (game.currentPlayer.name == 'Player 1') {
-           Player1.style.backgroundColor = '#00FF00';
+           Player1.style.backgroundColor = 'black';
+           Player1.style.color = 'white';
            Player1.innerHTML = 'Player 1';
            Player2.removeAttribute('style');
            currentScore1.innerHTML = game.score;
        } else {
            Player1.removeAttribute('style');
-           Player2.style.backgroundColor = '#FF0000';
+           Player2.style.backgroundColor = 'tomato';
+           Player2.style.color = 'white';
            Player2.innerHTML = 'Player 2';
            currentScore2.innerHTML = game.score;
        }
     
-        document.getElementById('currentScore').innerHTML = game.score;
-        document.getElementById('dice').innerHTML = game.dice.getValue();
+        //document.getElementById('currentScore').innerHTML = game.score;
+        //document.getElementById('dice').innerHTML = game.dice.getValue();
     }
 
     function GameOver(){
