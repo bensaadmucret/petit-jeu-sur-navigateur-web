@@ -280,11 +280,13 @@ body{
 
 @media (min-width: 992px) {
     #player1Score {
-        font-size: 1.5rem;
+        font-size: 5.5rem;
+        margin: 50px;
     }
 
     #player2Score {
-        font-size: 1.5rem;
+      font-size: 5.5rem;
+      margin: 50px;
     }
 
     .current {
