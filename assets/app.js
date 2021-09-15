@@ -117,26 +117,16 @@ window.addEventListener('load', function () {
             btnNewGame.innerHTML = '<h1> <i class="fas fa-plus-circle"></i>New Game</h1>';
             Deck.style.display = 'none';
         }
-        let winner = game.getWinner();
-        if (winner) {
-            document.getElementById('winner').innerHTML = `${winner.name} wins!`;
-        }
         if(game.currentPlayer.score >= 100) {
             game.isGameOver = true;
             alert(`${game.getWinner().name} wins!`);            
         }
 
-        if(game.isGameOver === true){
+        if (game.isGameOver === true) {
             game.newGame();
             updateUI();
-            document.getElementById('winner').innerHTML = "";
         }
     }
-
-
-
-
-
     
 });
 
