@@ -1,7 +1,7 @@
 import Player from './player.js';
 import Game from './game.js';
    
-window.addEventListener('load', function () {
+window.addEventListener('load', ()=> {
     const btnNewGame = document.getElementById('newGame');
     const btnRollDice = document.getElementById('btnRollDice');
     const btnHold = document.getElementById('btnHold');
