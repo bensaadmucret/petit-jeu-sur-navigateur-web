@@ -9,6 +9,7 @@ window.addEventListener('load', function () {
     const Player2 = document.getElementById('player2');
     const currentScore1 = document.getElementById('currentScore1');
     const currentScore2 = document.getElementById('currentScore2');
+    const Deck = document.getElementById('deck');
 
    
 
@@ -22,7 +23,7 @@ window.addEventListener('load', function () {
         game.newGame();
         updateUI();
         console.log(game.getStatus());
-        
+        Deck.style.display = 'none';
        
     });
  
@@ -30,6 +31,7 @@ window.addEventListener('load', function () {
     btnRollDice.addEventListener('click', function () {
         game.rollDice();
         updateUI();
+        Deck.style.display = 'block';
         game.badhand();
         EachRoll()
         GameOver();
@@ -113,6 +115,7 @@ window.addEventListener('load', function () {
             btnRollDice.setAttribute('disabled', 'true');
             btnHold.setAttribute('disabled', 'true');
             btnNewGame.innerHTML = '<h1> <i class="fas fa-plus-circle"></i>New Game</h1>';
+            Deck.style.display = 'none';
         }
         let winner = game.getWinner();
         if (winner) {
@@ -120,15 +123,13 @@ window.addEventListener('load', function () {
         }
         if(game.currentPlayer.score >= 100) {
             game.isGameOver = true;
-            alert(`${game.getWinner().name} wins!`);
-            
+            alert(`${game.getWinner().name} wins!`);            
         }
 
         if(game.isGameOver === true){
             game.newGame();
             updateUI();
             document.getElementById('winner').innerHTML = "";
-
         }
     }
 
