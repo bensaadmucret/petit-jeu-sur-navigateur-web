@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
     
 
 
-    btnNewGame.addEventListener('click', function () {
+    btnNewGame.addEventListener('click', ()=> {
         game.newGame();
         updateUI();
         console.log(game.getStatus());
@@ -28,7 +28,7 @@ window.addEventListener('load', function () {
     });
  
 
-    btnRollDice.addEventListener('click', function () {
+    btnRollDice.addEventListener('click', ()=> {
         game.rollDice();
         updateUI();
         Deck.style.display = 'block';
@@ -38,7 +38,7 @@ window.addEventListener('load', function () {
     });
     
 
-    btnHold.addEventListener('click', function () {
+    btnHold.addEventListener('click', ()=> {
         game.hold();
         updateUI();
         GameOver();
