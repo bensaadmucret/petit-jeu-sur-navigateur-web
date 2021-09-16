@@ -10,6 +10,8 @@ window.addEventListener('load', ()=> {
     const currentScore1 = document.getElementById('currentScore1');
     const currentScore2 = document.getElementById('currentScore2');
     const Deck = document.getElementById('deck');
+    const player1Score = document.getElementById('player1Score');
+    const player2Score = document.getElementById('player2Score');
 
    
 
@@ -44,11 +46,10 @@ window.addEventListener('load', ()=> {
         GameOver();
     });
 
-
     function updateUI() {
        
-        document.getElementById('player1Score').innerHTML = game.player1.score;
-        document.getElementById('player2Score').innerHTML = game.player2.score;
+        player1Score.innerHTML = game.player1.score;
+        player2Score.innerHTML = game.player2.score;
        
 
         if (game.newGame) {
